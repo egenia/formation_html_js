@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            function start() {
+                $.ajax({
+                    method: "GET",
+                    url : "http://iphdata.lequipe.fr/iPhoneDatas/EFR/STD/ALL/V2/home.json"
+                }).success(function (data) {
+                    console.log(data);
+                    for (var i=0; i<data.articles.length;i++) {
+                        $("#data").append("<tr><td>"+data.articles[i].titre+"</td><td>"+data.articles[i].texte+"</td></tr>")
+                    }
+                });
+            }
+        </script>
+</head>
+<body onload="start()">
+    <table id="data">
+
+    </table>
+
+</body>
+</html>
